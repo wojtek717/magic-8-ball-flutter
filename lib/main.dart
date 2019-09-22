@@ -1,8 +1,17 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(MagicBall());
 
-class MagicBall extends StatelessWidget {
+class MagicBall extends StatefulWidget {
+  @override
+  _MagicBallState createState() => _MagicBallState();
+}
+
+class _MagicBallState extends State<MagicBall> {
+  int answer = 1;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,11 +27,14 @@ class MagicBall extends StatelessWidget {
               child: FlatButton(
                 onPressed: (){
                   print('Clicked');
+                  setState(() {
+                    answer = Random().nextInt(5) + 1;
+                  });
                 },
                 highlightColor: Colors.transparent,
                 splashColor: Colors.transparent,
                 child: Image(
-                  image: AssetImage('images/ball1.png'),
+                  image: AssetImage('images/ball$answer.png'),
                 ),
               ),
             ),
